@@ -14,7 +14,11 @@ async function bootstrap() {
   app.use(urlencoded({ extended: true, limit: '50mb' }));
 
   app.useGlobalFilters(new HttpExceptionFilter());
-
-  await app.listen(process.env.PORT || 5000);
+  
+  const PORT = process.env.PORT || 10000;
+  app.listen(PORT, "0.0.0.0", () => {
+  console.log(`Server running on port ${PORT}`);
+});
+  
 }
 bootstrap();
